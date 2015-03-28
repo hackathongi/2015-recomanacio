@@ -29,6 +29,13 @@ function get_hackajob_object( name, objectid ) {
         async: false,
         url: 'https://api.wallyjobs.com/' + name + '/' + objectid ,
         dataType: 'json',
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        beforeSend: function (xhr, settings) {
+            xhr.withCredentials = true;
+        },
         success: function(response){
             switch (name) {
             	case 'jobs':
@@ -78,7 +85,14 @@ function recommend_events(){
 	        type: "POST",
 	        data: formdata,
 	        url: destination,
-	        success: function(response){
+	        crossDomain: true,
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr, settings) {
+                xhr.withCredentials = true;
+            },
+            success: function(response){
 	            alert(JSON.stringify(response));
 	        },
 	        error: function(response){
