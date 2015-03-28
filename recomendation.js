@@ -69,17 +69,15 @@ function recommend_events(){
 
 	$('#send-recomendation').click(function() {
 		var destination = "https://api.wallyjobs.com/recommendations";
-		var data = {};
-		data.description = $('#recomendation-description').val();
-		data.reccomender_id = params.id;
-		data.job_id = params.id_job;
-		data.application_id = params.id_application;
+		var formdata = {};
+		formdata.description = $('#recomendation-description').val();
+		formdata.reccomender_id = params.id;
+		formdata.job_id = params.id_job;
+		formdata.application_id = params.id_application;
 		$.ajax({
 	        type: "POST",
-	        data: data,
-	        async: false,
+	        data: formdata,
 	        url: destination,
-	        dataType: 'json',
 	        success: function(response){
 	            alert(JSON.stringify(response));
 	        },
