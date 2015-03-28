@@ -83,14 +83,10 @@ function recommend_events(){
 	        dataType: 'json',
 	        url: '/recommend/?description='+$('#recomendation-description').val()+'&reccomender_id='+params.id+'&job_id='+params.id_job+'&application_id='+params.id_application,
 	        success: function(response){
-				if ( ! response ) {
 	            	alert("Recomendació enviada");
-	            }
 	        },
 	        error: function(response){
-	            if ( ! response ) {
 	            	alert("Recomendació enviada");
-	            }
 	        }
 	    });
 	});
