@@ -6,8 +6,8 @@
    $url = 'https://api.wallyjobs.com/usertocontact' ;
 
    $post = array(
-      'id' => $id,
-      'candidate' => $candidate
+      'user_id' => $id,
+      'friend_id' => $candidate
       );
 
    $ch = curl_init();
