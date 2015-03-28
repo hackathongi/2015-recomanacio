@@ -51,19 +51,29 @@ if (typeof params.id_job != 'undefined' && typeof params.id_candidate != 'undefi
 		get_hackajob_object( 'users', params.id_candidate );
 		if ( params.id ) {
 			$('#login-facebook').remove();
+			insertContact(params.id, params.id_candidate);
 		}
 		else {
 			$('#send-recomendation').remove();
 		}
 		recommend_events();
 	});
+}
 
+function insertContact( id, candidate ) {
+	$.ajax({
+	        type: "GET",
+	        dataType: 'json',
+	        url: '/insertContact/?id='+id+'&candidate='+candidate,
+	        success: function(response){
+
+	        }
+	    });
 }
 
 function recommend_events(){
 	$('#login-facebook').click(function() {
 		var destination = "https://apisocial.wallyjobs.com/login/facebook?urlOK=" + encodeURIComponent(window.location.href)+'&urlKO='+ encodeURIComponent(window.location.href);
-		alert(destination);
 		window.location.href = destination;
 	});
 
