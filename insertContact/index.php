@@ -3,7 +3,7 @@
    $id = htmlspecialchars($_GET["id"]);
    $candidate = htmlspecialchars($_GET["candidate"]);
 
-   $url = 'https://api.wallyjobs.com/usertocontact' ;
+   $url = 'https://api.wallyjobs.com/user_to_contact' ;
 
    $post = array(
       'user_id' => $id,
