@@ -27,7 +27,7 @@ function get_hackajob_object( name, objectid ) {
 	$.ajax({
         type: "GET",
         async: false,
-        url: 'http://apic.wallyjobs.com/' + name + '/' + objectid ,
+        url: 'https://api.wallyjobs.com/' + name + '/' + objectid ,
         dataType: 'json',
         success: function(response){
             switch (name) {
