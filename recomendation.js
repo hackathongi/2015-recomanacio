@@ -27,15 +27,8 @@ function get_hackajob_object( name, objectid ) {
 	$.ajax({
         type: "GET",
         async: false,
-        url: 'https://api.wallyjobs.com/' + name + '/' + objectid ,
+        url: '/getObject/?name=' + name + '&objectid=' + objectid ,
         dataType: 'json',
-        crossDomain: true,
-        xhrFields: {
-            withCredentials: true
-        },
-        beforeSend: function (xhr, settings) {
-            xhr.withCredentials = true;
-        },
         success: function(response){
             switch (name) {
             	case 'jobs':
@@ -75,28 +68,19 @@ function recommend_events(){
 	});
 
 	$('#send-recomendation').click(function() {
-		var destination = "https://api.wallyjobs.com/recommendations";
-		var formdata = {};
-		formdata.description = $('#recomendation-description').val();
-		formdata.reccomender_id = params.id;
-		formdata.job_id = params.id_job;
-		formdata.application_id = params.id_application;
 		$.ajax({
-	        type: "POST",
-	        data: formdata,
-	        url: destination,
-	        crossDomain: true,
-            xhrFields: {
-                withCredentials: true
-            },
-            beforeSend: function (xhr, settings) {
-                xhr.withCredentials = true;
-            },
-            success: function(response){
-	            alert(JSON.stringify(response));
+	        type: "GET",
+	        dataType: 'json',
+	        url: '/recommend/?description='+$('#recomendation-description').val()+'&reccomender_id='+params.id+'&job_id='+params.id_job+'&application_id='+params.id_application,
+	        success: function(response){
+				if ( ! response ) {
+	            	alert("Recomendació enviada");
+	            }
 	        },
 	        error: function(response){
-	            alert("EEERRR "+JSON.stringify(response));
+	            if ( ! response ) {
+	            	alert("Recomendació enviada");
+	            }
 	        }
 	    });
 	});
